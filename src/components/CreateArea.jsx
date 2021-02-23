@@ -6,6 +6,8 @@ import Zoom from "@material-ui/core/Zoom";
 function CreateArea(props) {
   const [isExpanded, setExpanded] = useState(false);
 
+  // const [isvalid, setValid] = useState(true);
+
   const [note, setNote] = useState({
     title: "",
     content: ""
@@ -14,12 +16,16 @@ function CreateArea(props) {
   function handleChange(event) {
     const { name, value } = event.target;
 
-    setNote(prevNote => {
+    setNote((prevNote) => {
       return {
         ...prevNote,
         [name]: value
       };
     });
+
+    // setValid(() => {
+    //   return note.title === '' || note.content === '' ? true : false;
+    // });
   }
 
   function submitNote(event) {
@@ -28,6 +34,7 @@ function CreateArea(props) {
       title: "",
       content: ""
     });
+    setValid(true);
     event.preventDefault();
   }
 
